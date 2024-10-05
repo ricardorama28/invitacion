@@ -1,7 +1,3 @@
-// Inicializa EmailJS con la Public Key
-(function() {
-    emailjs.init("aXU6SMBhaByYF99Vb");  // Public Key, asegúrate de reemplazarla si cambia
-})();
 
 // Función para mostrar el formulario cuando se toca la pantalla de bienvenida
 function showForm() {
