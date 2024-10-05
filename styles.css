@@ -1,45 +1,188 @@
+
+/* Estilos generales */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f3f4f6;
+    overflow: hidden;
+    position: relative;
 }
 
-.container, .form-container {
+/* Estilo del contenedor de bienvenida */
+#welcome-screen {
+    z-index: 1;
+    position: relative;
     text-align: center;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2 {
-    color: #333;
-}
-
-p {
-    color: #666;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
     cursor: pointer;
+}
+
+/* Contenedor principal que manejará los fondos */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: url('img/fondo.jpg') no-repeat center center/cover;
+    background-size: cover;
+    transition: background 1s ease-in-out;
+}
+
+/* Estilo del fondo cuando cambia en la segunda pantalla */
+.background-confirmation {
+    background: url('img/fondo3.jpg') no-repeat center center/cover; /* Nueva imagen para la segunda pantalla */
+    background-size: cover;
+    transition: background 1s ease-in-out;
+    animation: backgroundAnimation 15s ease-in-out infinite;
+}
+
+/* Animación del background (efecto de movimiento sutil en la imagen) */
+@keyframes backgroundAnimation {
+    0% {
+        background-position: center;
+    }
+    50% {
+        background-position: center bottom;
+    }
+    100% {
+        background-position: center;
+    }
+}
+
+/* Estilos de la segunda pantalla (centrado) */
+#form-container {
+    display: none;
+    padding: 20px;
+    background-color: rgba(81, 61, 61, 0.442);
+    border-radius: 16px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para el cuadro de texto */
+input[type="date"] {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid #1b7c1ed2;
     border-radius: 8px;
+    background-color: #bf797940;
+    color: hsl(123, 73%, 23%);
     font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="date"]:focus {
+    border-color: #0e5c12;
+    outline: none;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el botón de enviar */
+button {
+    background-color: #4caf4f4d;
+    color: #1a591c;
+    border: none;
+    padding: 12px 24px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #66bb6a;
+    transform: translateY(-3px); /* Efecto de elevación */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-#confirmation-message {
-    margin-top: 15px;
+/* Estilos de transición para el cuadro de texto */
+input, button {
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo para el mensaje principal en la pantalla de bienvenida */
+#welcome-screen h1 {
+    font-size: 4rem;              /* Tamaño del texto */
+    color: #9efca3;               /* Color del texto */
+    text-align: center;           /* Alineación centrada */
+    margin-bottom: 20px;          /* Espaciado debajo del título */
+    font-family: 'Poppins', sans-serif; /* Fuente personalizada */
+}
+
+#welcome-screen p {
+    font-size: 1.5rem;            /* Tamaño del subtítulo */
+    color: #ffffff;                  /* Color del subtítulo */
+    text-align: center;           /* Alineación centrada */
+    font-family: 'Poppins', sans-serif; /* Fuente personalizada */
+    margin-top: 0;                /* Margen superior */
+}
+
+/* Estilo para la pantalla final */
+#final-screen {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #4caf50;
+}
+
+#final-screen h1 {
+    font-size: 2.5rem;
+    color: #ff6347;
+    margin-bottom: 10px;
+}
+
+#final-screen p {
+    font-size: 1.5rem;
     color: #333;
+}
+
+/* Estilo para la pantalla final */
+#final-screen {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: #4caf50;
+    background: url('img/fondo2.jpg') no-repeat center center/cover; /* Imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    min-height: 100vh; /* Para asegurarte de que ocupe toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo del título y subtítulos en la pantalla final */
+#final-screen h1 {
+    font-size: 2.5rem;
+    color: #ffffff; /* Cambia el color del texto para que resalte sobre el fondo */
+    margin-bottom: 10px;
+}
+
+#final-screen p {
+    font-size: 1.5rem;
+    color: #ffffff; /* Texto blanco sobre la imagen de fondo */
 }
