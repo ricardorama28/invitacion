@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Especial</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Solo uno de los scripts de EmailJS -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+          emailjs.init("aXU6SMBhaByYF99Vb");
+        })();
+    </script>
+</head>
+<body>
+    <!-- Pantalla de bienvenida -->
+    <div id="welcome-screen">
+        <h1>Coke?</h1>
+        <p>Toca en cualquier lugar para continuar</p>
+    </div>
+
+    <!-- Fondo de la página -->
+    <div id="background" class="background"></div>
+
+    <!-- Formulario para elegir la fecha -->
+    <div id="form-container" style="display:none;">
+        <h2>¿Qué fin de semana de octubre 2024 te gustaría pasar conmigo?</h2>
+        <input type="date" id="selected-date" min="2024-10-01" max="2024-10-31" required>
+        <button type="button" onclick="submitDate()">Enviar</button>
+        <p id="confirmation-message"></p>
+    </div>
+
+    <!-- Pantalla final después de elegir la fecha -->
+    <div id="final-screen" style="display:none;">
+        <h1>¡Gracias por elegir!</h1>
+        <p>No puedo esperar para compartir ese fin de semana contigo en octubre. 💕</p>
+        <p>Nos vemos pronto, amor.</p>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+    <!-- Mostrar el formulario cuando se toque la pantalla de bienvenida -->
+    <script>
+        document.getElementById('welcome-screen').addEventListener('click', function() {
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('form-container').style.display = 'flex';
+            document.getElementById('background').classList.add('background-confirmation');
+        });
+    </script>
+</body>
+</html>
